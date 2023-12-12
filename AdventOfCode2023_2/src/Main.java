@@ -8,12 +8,12 @@ import java.util.Map;
 
 import static java.util.Collections.max;
 
-// Advent of Code 2023, ülesanne 2:
+// Advent of Code 2023, Day 2:
 // https://adventofcode.com/2023/day/2
 //
 // IDE märkused:
-// Ülesanne 1 oli kirjutatud Javas kasutades Ecplipse'i.
-// Ülesanne 2 on kirjutatud Javas kasutades IntelliJ'd.
+// Day 1 oli kirjutatud Javas kasutades Ecplipse'i.
+// Day 2 on kirjutatud Javas kasutades IntelliJ'd, mis on umbes mustmiljon korda mugavam.
 
 public class Main {
     public static void main(String[] args) throws IOException {
