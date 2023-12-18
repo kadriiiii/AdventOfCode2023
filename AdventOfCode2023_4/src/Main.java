@@ -182,7 +182,7 @@ public class Main {
             // Map<Kaardi number, ühesuguste arv>
             Map<Integer, Integer> kaardiNumbridJaYhesugused = new HashMap<Integer, Integer>();
             // Map<Kaardi number, sisu ehk rida>
-            Map<Integer, String> kaardiNumbridJaSisu = new HashMap<Integer,String>();
+            Map<Integer, String> kaardiNumbridJaSisu = new HashMap<Integer, String>();
 
             int n = 0;
             // Iga kaardi kohta
@@ -193,14 +193,14 @@ public class Main {
                 int kaardiNumberInt = Integer.valueOf(kaardiNumber);
                 // Võidunumbrid
                 String kaardiInfo = kaheVahel(s, ": ", " |");
-                System.out.println("Kaardi nr " + kaardiNumber + " võidunumbrid on " + kaardiInfo);
+                // System.out.println("Kaardi nr " + kaardiNumber + " võidunumbrid on " + kaardiInfo);
 
                 // Mängunumbrid
                 // Lisan rea lõppu semikooloni,
                 // et funktsioonil kaheVahel oleks lõppsümbol
                 String s1 = s + ";";
                 String m2nguInfo = kaheVahel(s1, "|", ";");
-                System.out.println("Kaardi nr " + kaardiNumber + " mängunumbrid on " + m2nguInfo);
+                // System.out.println("Kaardi nr " + kaardiNumber + " mängunumbrid on " + m2nguInfo);
 
                 // Eralda võidunumbrid tühikute abil listiks.
                 // Eemalda eelmiselt realt leitud numbrid.
@@ -231,13 +231,13 @@ public class Main {
                 // Võrdle võidunumbreid ja mängunumbreid
                 // ning leia mitu on ühesuguseid elemente.
                 v6iduNumbridInt.retainAll(p2kaNumbridInt);
-                System.out.println("Kattuvad numbrid: " + v6iduNumbridInt);
+                // System.out.println("Kattuvad numbrid: " + v6iduNumbridInt);
                 // Ühesuguste elementide arv
                 int yhesugused = v6iduNumbridInt.size();
-                System.out.println("Selle mängu kattuvaid numbreid on: " + yhesugused);
+                // System.out.println("Selle mängu kattuvaid numbreid on: " + yhesugused);
                 double punktid = Math.pow(2, (yhesugused - 1));
                 int punktidInt = (int) punktid;
-                System.out.println("Selle mängu punktid on: " + punktidInt);
+                // System.out.println("Selle mängu punktid on: " + punktidInt);
                 // Lisa konkreetse mängu punktid listi
                 m2nguPunktid.add(punktidInt);
 
@@ -250,35 +250,81 @@ public class Main {
             }
 
             // Loo tühjad listid
-            ArrayList<String> kaardidL6puks = new ArrayList<String>();
-            // Lisan esimese kaardi
-            kaardidL6puks.add(kaardiNumbridJaSisu.get(1));
-            // Keys - kaartide numbrid
+            //// Siia kogu k6ik kaardid, mis l6puks on
+            //// Selle listi pikkus on ülesande vastus (kaartide arv)
+            ArrayList<Integer> kaardidL6puks = new ArrayList<Integer>();
+            //// Keys - kaartide numbrid ArrayListina kaardiNumbrid1
             Set<Integer> kaardiNumbridMapist = kaardiNumbridJaYhesugused.keySet();
             ArrayList<Integer> kaardiNumbrid1 = new ArrayList<Integer>(kaardiNumbridMapist);
-            System.out.println("Kaartide numbrid HashMapist: " + kaardiNumbridMapist);
-            // Values - ühesuguste arvude arv igal kaardil
+            System.out.println("Kaartide numbrid HashMapist: " + kaardiNumbrid1);
+            //// Values - ühesuguste arvude arv igal kaardil, yhesugusteArvHashMapist ArrayListina
             ArrayList<Integer> yhesugusteArvHashMapist = new ArrayList<Integer>(kaardiNumbridJaYhesugused.values());
             System.out.println("Ühesuguste arvude arv HashMapist: " + yhesugusteArvHashMapist);
-            int j = 0;
-            do {
-                int kordaja = yhesugusteArvHashMapist.get(j);
-                System.out.println("Kordaja: " + kordaja);
-                if (kordaja != 0) {
-                    for (int p = 1; (p <= kordaja && j+p < yhesugusteArvHashMapist.size()); p++) {
-                        // Leia kui mitu seda kaardinumbrit kaardidL6puks reas juba on
-                        // Nii mitu korda lisa neid ridu
-                        kaardidL6puks.add(kaardiNumbridJaSisu.get(j + p));
-                        System.out.println("Kaardid lõpuks");
+            //// Lisan kõik kaaridnumbrid kaardidL6puks listi,
+            //// sest vähemalt ühe korra on igat kaarti
+            for (int i = 0; i < kaardiNumbrid1.size(); i++) {
+                kaardidL6puks.add(kaardiNumbrid1.get(i));
+            }
+            System.out.println("Kaardid alguses: " + kaardidL6puks);
+
+            // Üle kõigi kaartide ehk nii mitu korda kui mitu on elemente listis kaardiNumbri1
+            for (int j = 0; j < kaardiNumbrid1.size(); j++) {
+                int selleReaNumber = kaardiNumbrid1.get(j);
+                System.out.println("Loen kaarti number " + selleReaNumber);
+
+                // Kogutud kaartide listi pikkus
+                int kaartideArv = kaardidL6puks.size();
+
+                // Leia mitu korda see rida (tema number)
+                // kaardidL6puks listis esineb.
+                // Loe kõik kaardidL6puks listi elemendid
+                // Alguses on loenguri arv 0
+                int mituKordaRiduKopeerida = 0;
+                int ajutineLoendur = 0;
+                for (int k = 0; k < kaartideArv; k++) {
+                    // Kui element on võrdne selle rea numbriga,
+                    // siis suurenda loendurit.
+                    if (kaardidL6puks.get(k) != 0) {
+                        if (kaardidL6puks.get(k).equals(selleReaNumber)) {
+                            ajutineLoendur++;
+                            // System.out.println("Korduste arv on " + mituKordaRiduKopeerida);
+                            mituKordaRiduKopeerida = ajutineLoendur;
+                        }
                     }
                 }
-                j++;
-            } while (j < kaardidL6puks.size());
 
+                System.out.println("Neid ridu peab kopeerima " + mituKordaRiduKopeerida + " korda.");
+
+                // Kopeeri read
+                // Tsükkel käib nii mitu korda, kui mitu korda ridu kopeerima peab
+                int mituRidaKopeerida = yhesugusteArvHashMapist.get(j);
+                System.out.println("Kopeeri järgmised " + mituRidaKopeerida + " rida.");
+                if (mituKordaRiduKopeerida != 0) {
+                    for (int t = 0; t < mituKordaRiduKopeerida; t++) {
+                        for (int p = 1; p <= mituRidaKopeerida; p++) {
+                            // p=0 on algus, sest igal juhul siis lisame kaardidL6puks
+                            // listi ainult selle kaardi, mida just lugesime.
+                            // Kui lisatava rea number ei ületa sisendandmete ridade arvu
+                            if ((j + p) < yhesugusteArvHashMapist.size()) {
+                                // Lisa loetav rida kui j ja p mõlemad = 0
+                                // Lisa järgmised p rida, kui p != 0
+                                // Lisa kaardi number, mitte rea sisu, sest kontrollime pärast kaardi numbreid
+                                kaardidL6puks.add(kaardiNumbrid1.get(j + p));
+                                // Kaarte on nüüd
+                                kaartideArv = kaardidL6puks.size();
+                            } else if ((j + p) >= yhesugusteArvHashMapist.size()) {
+                                break;
+                            }
+                        }
+                        // Suurenda iteratsioonide arvu
+                        kaartideArv = kaardidL6puks.size();
+                    }
+                }
+
+                System.out.println("Kaarte on " + kaartideArv);
+            }
+            // Kaarte on 18846301
             System.out.println("Lõpuks on " + kaardidL6puks.size() + " kaarti.");
-
-
-
         } catch (Exception viga) {
             System.out.println(viga);
         }
