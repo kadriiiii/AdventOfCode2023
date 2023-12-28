@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FileReader sisendFail = new FileReader("AdventOfCode2023_4_sisend.txt");
+        FileReader sisendFail = new FileReader("..\\sisend\\AdventOfCode2023_4_sisend.txt");
         // Ülesanne 1
         // v6idud(sisendFail);
         // Ülesanne 2

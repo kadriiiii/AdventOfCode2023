@@ -9,7 +9,7 @@ import static java.util.Collections.min;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FileReader sisendFail = new FileReader("AdventOfCode2023_5_sisend.txt");
+        FileReader sisendFail = new FileReader("..\\sisend\\AdventOfCode2023_5_sisend.txt");
         // Ülesanne 1
         // l2himLocation(sisendFail);
         // Ülesanne 2

@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FileReader sisendFail = new FileReader("AdventOfCode2023_3_sisend.txt");
+        FileReader sisendFail = new FileReader("..\\sisend\\AdventOfCode2023_3_sisend.txt");
         // Ülesanne 1
         //osadeSumma(sisendFail);
         // Ülesanne 2
@@ -366,6 +366,7 @@ public class Main {
 //
 //                // Uuenda arvude summa väärtust
 //                arvudeSumma = arvudeSumma + reaSumma;
+//                // 537832
 //                System.out.println("Seni leitud arvude summa on " + arvudeSumma);
 //
 //            }
@@ -690,6 +691,7 @@ public class Main {
                     korrutisteSumma = korrutisteSumma + korrutised.get(q);
                 }
                 System.out.println("Korrutiste summa on: " + korrutisteSumma);
+                // 81939900
             }
         } catch (Exception viga) {
             System.out.println(viga);
