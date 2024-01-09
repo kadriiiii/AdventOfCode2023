@@ -9,7 +9,7 @@ public class Main {
         FileReader sisendFail = new FileReader("..\\sisend\\AdventOfCode2023_7_sisend.txt");
         // Näiteandmed
         //FileReader sisendFail = new FileReader("AdventOfCode2023_7_n2iteAndmed.txt");
-        // Ülesanne 1
+        // Ülesanded 1 ja 2
         v6itudeSumma(sisendFail);
     }
 
